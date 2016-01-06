@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="windows-1255">
+<title>Customer Service Resources</title>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/customer.js"></script>
+</head>
+<body>
+	<h1>Login Customer Service Resources</h1>
+	<hr />
+
+	<div id="main" data-ng-app="CouponSystemCustomerApp" data-ng-controller="CouponSystemCustomerController">
+		
+		<div id="loginDiv">
+
+			<label>username: <input type="text" id="userName"data-ng-model="username" /></label><br/>
+			<label>password: <input type="text" id="password" data-ng-model="password"/></label><br/>
+	
+
+			<button id="login" data-ng-click="login()">login</button>
+			<br />
+
+		</div>
+		<div id="infomessage" data-ng-bind="infomessage"></div>
+		<div id="errormessage" data-ng-bind="errormessage"></div>
+
+		<h3>I am logged in!</h3>
+
+		<div id="customerMain">
+			<hr />
+			<h2>Coupon</h2>
+			<div id="purchaseCoupon" data-ng-controller="CouponSystemCustomerController">
+				 <label>id: <input type="text" id="idToPurchase" name="idToPurchase" data-ng-model="id" /></label><br />
+				<button id="purchaseCoupon" data-ng-click="purchaseCoupon()">purchaseCoupon</button><br />
+				<div>{{infomessage}}</div>
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+			</div>
+			<br/>
+			<div id="getAllPurchasedCoupons" data-ng-controller="CouponSystemCustomerController"
+			 data-ng-init="purchasedcouponList=[{id:'id', coupon:'title' , message:'message' , image :'image' , startDate :'startDate', endDate : 'endDate' , amount : 'amount' , type : 'type' , price : 'price'}]">
+				<button id="getAllPurchasedCoupons" data-ng-click="getAllPurchasedCoupons()">getAllPurchasedCoupons</button><br />
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+				<div >
+				<ul>
+   				 <li data-ng-repeat="purchasedcoupon in purchasedcoupons">
+     				 {{ purchasedcoupon.id + ' , ' + purchasedcoupon.title + ', ' + purchasedcoupon.message + ', ' + purchasedcoupon.image + ', ' + purchasedcoupon.startDate + ', ' + purchasedcoupon.endDate + ', ' + purchasedcoupon.amount + ', ' + purchasedcoupon.type + ', ' + purchasedcoupon.price }}
+ 			     </li>
+ 				 </ul>
+				</div>
+			</div>
+			<div id="getAllPurchasedCouponsByType" data-ng-controller="CouponSystemCustomerController"
+			 data-ng-init="purchasedcouponByTypeList=[{id:'id', coupon:'title' , message:'message' , image :'image' , startDate :'startDate', endDate : 'endDate' , amount : 'amount' , type : 'type' , price : 'price'}]">
+			    <label>type: <input type="text" id="getAllPurchasedCouponsByType" name="getAllPurchasedCouponsByType" data-ng-model="type" /></label><br />
+				<button id="getAllPurchasedCouponsByType" data-ng-click="getAllPurchasedCouponsByType()">getAllPurchasedCouponsByType</button><br />
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+				<div >
+				<ul>
+   				 <li data-ng-repeat="purchasedcouponbytype in purchasedcouponsbytype">
+     				 {{ purchasedcouponbytype.id + ' , ' + purchasedcouponbytype.title + ', ' + purchasedcouponbytype.message + ', ' + purchasedcouponbytype.image + ', ' + purchasedcouponbytype.startDate + ', ' + purchasedcouponbytype.endDate + ', ' + purchasedcouponbytype.amount + ', ' + purchasedcouponbytype.type + ', ' + purchasedcouponbytype.price }}
+ 			     </li>
+ 				 </ul>
+				</div>
+			</div>
+			<div id="getAllPurchasedCouponsByPrice" data-ng-controller="CouponSystemCustomerController"
+			 data-ng-init="purchasedcouponByPriceList=[{id:'id', coupon:'title' , message:'message' , image :'image' , startDate :'startDate', endDate : 'endDate' , amount : 'amount' , type : 'type' , price : 'price'}]">
+			    <label>price: <input type="text" id="getAllPurchasedCouponsByPrice" name="getAllPurchasedCouponsByPrice" data-ng-model="price" /></label><br />
+				<button id="getAllPurchasedCouponsByPrice" data-ng-click="getAllPurchasedCouponsByPrice()">getAllPurchasedCouponsByPrice</button><br />
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+				<div >
+				<ul>
+   				 <li data-ng-repeat="purchasedcouponbyprice in purchasedcouponsbyprice">
+     				 {{ purchasedcouponbyprice.id + ' , ' + purchasedcouponbyprice.title + ', ' + purchasedcouponbyprice.message + ', ' + purchasedcouponbyprice.image + ', ' + purchasedcouponbyprice.startDate + ', ' + purchasedcouponbyprice.endDate + ', ' + purchasedcouponbyprice.amount + ', ' + purchasedcouponbyprice.type + ', ' + purchasedcouponbyprice.price }}
+ 			     </li>
+ 				 </ul>
+				</div>
+			</div>
+			<hr />
+		<div>
+			<button id="logout" data-ng-click="logout()">logout</button>
+			<div id="infomessage" data-ng-bind="infomessage"></div>
+			<div id="errormessage" data-ng-bind="errormessage"></div>
+		</div>
+	</div>
+	</div>
+
+</body>
+</html>

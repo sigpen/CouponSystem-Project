@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="windows-1255">
+<title>Company Service Resources</title>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/company.js"></script>
+</head>
+<body>
+	<h1>Login Company Service Resources</h1>
+	<hr />
+	<div id="main" data-ng-app="CouponSystemCompanyApp" data-ng-controller="CouponSystemCompanyController">
+		
+	<div id="loginDiv">
+
+				<label>username: <input type="text" id="userName"data-ng-model="username" /></label><br/>
+				<label>password: <input type="text" id="password" data-ng-model="password"/></label><br/>
+				<button id="login" data-ng-click="login()">login</button><br />
+	</div>
+	<div id="infomessage" data-ng-bind="infomessage"></div>
+	<div id="errormessage" data-ng-bind="errormessage"></div>
+	
+			<h3>I am logged in!</h3>
+	<div id="companyMain" >
+			<hr />
+			<h2>Coupon</h2>
+			<div id="createCoupon" data-ng-controller="CouponSystemCompanyController">
+				 <label>title:     <input type="text" id="titleToCreate"      name="titleToCreate"      data-ng-model="title"     /></label><br />
+				 <label>message:   <input type="text" id="messageToCreate"    name="messageToCreate"    data-ng-model="message"   /></label><br /> 
+				 <label>image:     <input type="text" id="imageToCreate"      name="imageToCreate"      data-ng-model="image"     /></label><br />
+				 <label>startDate: <input type="text" id="startDateToCreate"  name="startDateToCreate"  data-ng-model="startDate" /></label><br />
+				 <label>endDate:   <input type="text" id="endDateToCreate"    name="endDateToCreate"    data-ng-model="endDate"   /></label><br />
+				 <label>amount:    <input type="text" id="amountToCreate"     name="amountToCreate"     data-ng-model="amount"    /></label><br />
+				 <label>type:      <input type="text" id="typeToCreate"       name="typeToCreate"       data-ng-model="type"      /></label><br />
+				 <label>price:     <input type="text" id="priceToCreate"      name="priceToCreate"      data-ng-model="price"     /></label><br />
+				 <button id="createCoupon" data-ng-click="createCoupon()">Create Coupon</button><br />
+	<div>{{infomessage}}</div>
+	<div id="errormessage" data-ng-bind="errormessage"></div>
+	</div>
+			<hr />
+	<div id="removeCoupon" data-ng-controller="CouponSystemCompanyController">
+				<label>id: <input type="text" id="idToRemove" name="idToRemove" data-ng-model="id" /></label><br />
+				<button id="removeCoupon" data-ng-click="removeCoupon()">remove Coupon</button><br />
+	<div id="infomessage" data-ng-bind="infomessage"></div>
+	<div id="errormessage" data-ng-bind="errormessage"></div>
+	</div>
+			<hr />
+	<div id="updateCoupon" data-ng-controller="CouponSystemCompanyController">
+				 <label>title:     <input type="text" id="titleToUpdate"      name="titleToUpdate"      data-ng-model="title"     /></label><br />
+				 <label>message:   <input type="text" id="messageToUpdate"    name="messageToUpdate"    data-ng-model="message"   /></label><br /> 
+				 <label>image:     <input type="text" id="imageToUpdate"      name="imageToUpdate"      data-ng-model="image"     /></label><br />
+				 <label>startDate: <input type="text" id="startDateToUpdate"  name="startDateToUpdate"  data-ng-model="startDate" /></label><br />
+				 <label>endDate:   <input type="text" id="endDateToUpdate"    name="endDateToUpdate"    data-ng-model="endDate"   /></label><br />
+				 <label>amount:    <input type="text" id="amountToUpdate"     name="amountToUpdate"     data-ng-model="amount"    /></label><br />
+				 <label>type:      <input type="text" id="typeToUpdate"       name="typeToUpdate"       data-ng-model="type"      /></label><br />
+				 <label>price:     <input type="text" id="priceToUpdate"      name="priceToUpdate"      data-ng-model="price"     /></label><br />
+				<button id="updateCoupon" data-ng-click="updateCoupon()">update Coupon</button><br />
+				<div>{{infomessage}}</div>
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+	</div>
+			<hr />
+	<div id="getCoupon" data-ng-controller="CouponSystemCompanyController">
+				<label>id: <input type="text" id="getCouponById" name="getCouponById" data-ng-model="id" /></label><br />
+				<button id="getCoupon" data-ng-click="getCoupon()">get Coupon</button><br />
+				<div>{{infomessage}}</div>
+	<div id="errormessage" data-ng-bind="errormessage"></div>
+	</div>
+			<hr />
+			
+			<div id="getAllCoupons" data-ng-controller="CouponSystemCompanyController"
+			 data-ng-init="couponList=[{id:'id', coupon:'title' , message:'message' , image :'image' , startDate :'startDate', endDate : 'endDate' , amount : 'amount' , type : 'type' , price : 'price'}]">
+				<button id="getAllCoupons" data-ng-click="getAllCoupons()">getAllCoupons</button><br />
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+				<div >
+				<ul>
+   				 <li data-ng-repeat="coupon in coupons">
+     				 {{ coupon.id + ' , ' + coupon.title + ', ' + coupon.message + ', ' + coupon.image + ', ' + coupon.startDate + ', ' + coupon.endDate + ', ' + coupon.amount + ', ' + coupon.type + ', ' + coupon.price }}
+ 			     </li>
+ 				 </ul>
+				</div>
+			</div>
+			<hr />
+			
+			<div id="getCouponByType" data-ng-controller="CouponSystemCompanyController"
+			 data-ng-init="couponByTypeList=[{id:'id', coupon:'title' , message:'message' , image :'image' , startDate :'startDate', endDate : 'endDate' , amount : 'amount' , type : 'type' , price : 'price'}]">
+			    <label>type: <input type="text" id="getCouponByType" name="getCouponByType" data-ng-model="type" /></label><br />
+				<button id="getCouponByType" data-ng-click="getCouponByType()">getCouponByType</button><br />
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+				<div >
+				<ul>
+   				 <li data-ng-repeat="couponbytype in couponsbytype">
+     				 {{ couponbytype.id + ' , ' + couponbytype.title + ', ' + couponbytype.message + ', ' + couponbytype.image + ', ' + couponbytype.startDate + ', ' + couponbytype.endDate + ', ' + couponbytype.amount + ', ' + couponbytype.type + ', ' + couponbytype.price }}
+ 			     </li>
+ 				 </ul>
+				</div>
+			</div>
+		</div>
+		<div>
+			<hr />
+			<button id="logout" data-ng-click="logout()">logout</button>
+			<div id="infomessage" data-ng-bind="infomessage"></div>
+			<div id="errormessage" data-ng-bind="errormessage"></div>
+		</div>
+
+		</div>
+</body>
+</html>

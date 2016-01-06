@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="windows-1255">
+<title>Admin Service Resources</title>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/admin.js"></script>
+</head>
+<body>
+	<h1>Login Admin Service Resources</h1>
+
+	<hr />
+
+	<div id="main" data-ng-app="CouponSystemApp"
+		data-ng-controller="CouponSystemController">
+		<div id="loginDiv">
+
+			<label>username: <input type="text" id="userName"data-ng-model="username" /></label><br/>
+			<label>password: <input type="text" id="password" data-ng-model="password"/></label><br/>
+	
+
+			<button id="login" data-ng-click="login()">login</button>
+			<br />
+
+		</div>
+		<div id="infomessage" data-ng-bind="infomessage"></div>
+		<div id="errormessage" data-ng-bind="errormessage"></div>
+
+		<h3>I am logged in!</h3>
+
+		<div id="adminMain">
+			<hr />
+			<h2>Company</h2>
+			
+			<div id="createCompany" data-ng-controller="CouponSystemController">
+				 <label>compName: <input type="text" id="compNameToCreate" name="compNameToCreate" data-ng-model="compName" /></label><br />
+				 <label>password: <input type="text" id="passwordToCreate" name="passwordToCreate" data-ng-model="password" /></label><br /> 
+				 <label>email:    <input type="text" id="emailToCreate"    name="emailToCreate"    data-ng-model="email"    /></label><br />
+				<button id="createCompany" data-ng-click="createCompany()">Create Company</button><br />
+				
+				<div>{{infomessage}}</div>
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+			</div>
+			
+			
+			<hr />
+			<div id="removeCompany" data-ng-controller="CouponSystemController">
+				<label>id: <input type="text" id="idToRemove" name="idToRemove" data-ng-model="id" /></label><br />
+				<button id="removeCompany" data-ng-click="removeCompany()">removeCompany</button>
+				<div>{{infomessage}}</div>
+		        <div id="errormessage" data-ng-bind="errormessage"></div>
+			</div>
+			<hr />
+			<div id="updateCompany" data-ng-controller="CouponSystemController">
+				<label>compName: <input type="text" id="compNameToUpdate" name="compNameToUpdate" data-ng-model="compName" /></label><br />
+				<label>password: <input type="text" id="passwordToUpdate" name="passwordToUpdate" data-ng-model="password" /></label><br /> 
+				<label>email: <input type="text" id="emailToUpdate" name="emailToUpdate" data-ng-model="email" /></label><br />
+				<button id="updateCompany" data-ng-click="updateCompany()">updateCompany</button><br />
+				<div>{{infomessage}}</div>
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+			</div>
+			<hr />
+			<div id="getCompany" data-ng-controller="CouponSystemController">
+				<label>id: <input type="text" id="getCompanyById" name="getCompanyById" data-ng-model="id" /></label><br />
+				<button id="getCompany" data-ng-click="getCompany()">getCompany</button><br />
+				<div>{{infomessage}}</div>
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+			</div>
+			<hr />
+			<div id="getAllCompanies" data-ng-controller="CouponSystemController"
+			 data-ng-init="companyList=[{id:'id', company:'compName' , password:'password' , email: 'email'}]">
+				<button id="getAllCompanies" data-ng-click="getAllCompanies()">getAllCompanies</button><br />
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+				<div >
+				<ul>
+   				 <li data-ng-repeat="company in companies">
+     				 {{company.id + ' , ' + company.compName + ', ' + company.password + ' , ' + company.email}}
+ 			     </li>
+ 				 </ul>
+				</div>
+			</div>
+			<hr />
+			<h2>Customer</h2>
+			<div id="createCustomer" data-ng-controller="CouponSystemController">
+				<label>cust_name : <input type="text" id="cust_nameToCreate" name="cust_nameToCreate" data-ng-model="cust_name" /></label><br /> 
+				<label>password: <input type="text" id="passwordToCreate" name="passwordToCreate" data-ng-model="password" /> </label><br />
+				<button id="createCustomer" data-ng-click="createCustomer()">create Customer</button><br />
+				<div>{{infomessage}}</div>
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+			</div>
+			<hr />
+			<div id="removeCustomer" data-ng-controller="CouponSystemController">
+				<label>id: <input type="text" id="idToRemove" name="idToRemove" data-ng-model="id" /></label><br />
+				<button id="removeCustomer" data-ng-click="removeCustomer()">removeCustomer</button><br/>
+				<div>{{infomessage}}</div>
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+			</div>
+			<hr />
+			<div id="updateCustomer" data-ng-controller="CouponSystemController">
+				<label>cust_name: <input type="text" id="cust_nameToUpdate" name="cust_nameToUpdate" data-ng-model="cust_name" /></label><br /> 
+				<label>password: <input type="text" id="passwordToUpdate" name="passwordToUpdate" data-ng-model="password" /> </label><br />
+				<button id="updateCustomer" data-ng-click="updateCustomer()">updateCustomer</button><br />
+				<div>{{infomessage}}</div>
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+			</div>
+			<hr />
+			<div id="getCustomer" data-ng-controller="CouponSystemController">
+				<label>id: <input type="text" id="getCustomerById" name="getCustomerById" data-ng-model="id" /> </label><br />
+				<button id="getCustomer" data-ng-click="getCustomer()">getCustomer</button><br />
+				<div>{{infomessage}}</div>
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+			</div>
+			<hr />
+			<div id="getAllCustomer" data-ng-controller="CouponSystemController"
+			 data-ng-init="customerList=[{id:'id',customer:'cust_name' , password:'password'}]">
+				<button id="getAllCustomer" data-ng-click="getAllCustomer()">getAllCustomer</button><br />
+				<div id="errormessage" data-ng-bind="errormessage"></div>
+				<div >
+				<ul>
+   				 <li data-ng-repeat="customer in customers">
+     				 {{ customer.id + ', ' + customer.cust_name + ', ' + customer.password }}
+ 			     </li>
+ 				 </ul>
+				</div>
+			</div>
+			<hr />
+		</div>
+		<div>
+			<button id="logout" data-ng-click="logout()">logout</button>
+			<div id="infomessage" data-ng-bind="infomessage"></div>
+			<div id="errormessage" data-ng-bind="errormessage"></div>
+		</div>
+
+		
+	</div>
+
+</body>
+</html>
